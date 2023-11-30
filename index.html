@@ -1,0 +1,41 @@
+<html lang="de">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta charset="utf-8">
+
+    <title>Test Bricks</title>
+    <script type="module" src="src/main.js"></script>
+</head>
+<body>
+    <test-bricks level:="0" ></test-bricks>
+
+    <template id="global-styles">
+        <style>
+            :not(:defined) { display: none }
+
+            :root, body {
+                --fg-col: #a4712f;
+                --bg-col: #010820;
+
+                background: var(--bg-col);
+                color: var(--fg-col);
+
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+
+                touch-action: none;
+                -webkit-user-select: none;
+                user-select: none;
+                box-sizing: border-box;
+            }
+
+            * { box-sizing: border-box }
+        </style>
+    </template>
+</body>
+</html>

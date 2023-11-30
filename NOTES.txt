@@ -1,0 +1,46 @@
+# Verschiedene Weisen mit dem Proxy Objekt eine Event Listener Funktion anzumelden:
+    1. Die Value analysieren (zergliedern):
+        onCallback='someCallback(event, 0, false, "string")' => 'someCallback', event, 0, false, 'string'
+        const [ _, handler, paramStr ] = value.match(/([a-zA-Z_]+)(\([^\)]+\))/);
+        const params = JSON.parse(`[${paramStr.slice(1, -1).replace('event', '"event"')}]`);
+        target[prop] = (event) => context[handler](...params.map(p => p === 'event' ? event : p));
+        target[prop] = (function handler(event) { eval(value); }).bind(target[THIS]);
+
+    2. Einfach, den Callback Name geben, Parameter is immer 'event'. Der Kontext (this) is immer der oberste Knoten (ShadowDom.host, oder Window)
+        onCallbacck = "someCallback"
+        target[prop] = (event) => context[target[THIS].getRootNode()?.host || window](event));
+
+    3. Eval. Probleme: Nicht immer erlaubt, 'this' ist auch nicht einfach zu setzten.
+
+# Verschiedene Weisen um unnötige Render Cyclen zu vermeiden.
+    (debounce -> Throttle)
+    1. debounce:
+        - Zeitpunkt speichern
+        - Unterschied vom letzten Zeitpunkt rechnen
+        - Verbliebene Zeit rechnen
+        - Altes timeout Löschen
+        - letzten Zeitpunkt aktualisieren, Falls nötig
+        - Neues timeout installieren, mit verbliebenen Zeit
+
+
+    const now = Date.now();
+    const transpired = now - target[DEBOUNCE].time;
+    const expireAt = transpired > duration ? duration : duration - transpired;
+
+    window.clearTimeout(target[DEBOUNCE].timer);
+    target[DEBOUNCE].time = transpired > duration ? now : target[DEBOUNCE].time;
+    target[DEBOUNCE].timer = window.setTimeout(() => target[THIS].render(), expireAt);
+
+    oder, vielleicht
+
+    const now = Date.now();
+    const transpired = now - target[DEBOUNCE].time;
+
+    if (transpired > duration) {
+        window.clearTimeout(target[DEBOUNCE].timer);
+        target[DEBOUNCE].time = transpired > duration ? now : target[DEBOUNCE].time;
+        target[DEBOUNCE].timer = window.setTimeout(() => target[THIS].render(), expireAt);
+    }
+
+    oder, vielleicht:
+        callback speichert eine Flagge, render true oder false, eine andere Function macht das Check, und zur
