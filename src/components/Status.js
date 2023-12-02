@@ -5,7 +5,6 @@ import { proxify } from '../lib/proxy.js';
 const getStyles = () => (`
     :host {
         display: block;
-        box-sizing: border-box;
     }
 
     .container {
@@ -21,7 +20,6 @@ const getStyles = () => (`
         width: calc(80% + 8px);
         border: 4px solid;
         overflow: hidden;
-        box-sizing: border-box;
     }
 
     .number-block {

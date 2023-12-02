@@ -11,7 +11,6 @@ const getStyles = () => (`
         height: 100%;
         width: 100%;
         padding-top: 32px;
-        box-sizing: border-box;
     }
 
     .game-container {
