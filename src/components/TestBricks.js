@@ -9,12 +9,15 @@ const getStyles = () => (`
         flex-direction: column;
         justify-content: center;
         height: 100%;
+        width: 100%;
+        padding-top: 32px;
     }
 
     .game-container {
         display: grid;
         grid-template-rows: 3fr 1fr;
         grid-gap: 8px;
+        height: 100%;
     }
 `);
 //    </style>

@@ -65,21 +65,44 @@ export class Controls extends HTMLElement {
     }
     static observedAttributes = ['onpress'];
     #values = { pressed: -1 }
+    #keydown = null;
 
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
         this.#values = proxify(this, this.#values);
+        this.#keydown = ({ code, shiftKey }) => {
+            let pressed = -1;
+
+            if (code === 'ArrowLeft') {
+                pressed = 0;
+            } else if (code === 'ArrowDown') {
+                pressed = 1;
+            } else if (code === 'ArrowRight') {
+                pressed = 2;
+            } else if ((code === 'Space' && shiftKey) || (code === 'ArrowUp' && !shiftKey) || code === 'KeyL') {
+                pressed = 3;
+            } else if ((code === 'Space' && !shiftKey) || (code === 'ArrowUp' && shiftKey) || code === 'KeyR') {
+                pressed = 4;
+            }
+
+            if (pressed < 0) {
+                return;
+            }
+            this.dispatchEvent(new CustomEvent('press', {
+                detail: { pressed }
+            }));
+        };
     }
 
     connectedCallback() {
-        // add global listeners, remove in dis
         this.shadowRoot.adoptedStyleSheets = [...document.adoptedStyleSheets, stylesSheet];
         this.render();
+        window.addEventListener('keydown', this.#keydown);
     }
 
     disconnectedCallback() {
-        // remove global listeners, remove in dis
+        window.removeEventListener('keydown', this.#keydown);
     }
 
     attributeChangedCallback(prop, oldValue, newValue) {
