@@ -22,8 +22,11 @@ const getStyles = () => (`
         color: var(--bg-col);
         border-radius: 100%;
         border: 4px solid var(--fg-col);
+        overflow: hidden;
         font-size: 32px;
         appearance: none;
+        line-height: 100%;
+        padding: 0;
     }
 
     .button:active {
@@ -48,7 +51,7 @@ const getTemplate = (values) => (`
                  class="button ${values.pressed === index ? 'active' : '' }"
                  onMouseDown="this.getRootNode().host.onDown(${index})"
                  onMouseUp="this.getRootNode().host.onUp(${index})"
-             > ${label}  </button>
+             >${label}</button>
         `)).join('')}
     </section>
 `);

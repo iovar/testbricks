@@ -7,7 +7,6 @@
     <meta charset="utf-8">
 
     <title>Test Bricks</title>
-    <script type="module" src="src/main.js"></script>
 </head>
 <body>
     <test-bricks level:="0" ></test-bricks>
@@ -37,5 +36,11 @@
             * { box-sizing: border-box }
         </style>
     </template>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
