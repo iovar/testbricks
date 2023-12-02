@@ -73,12 +73,16 @@ function* gameEngine() {
         }
 
         if (next.outOfBounds && move !== 'DROP') {
+            nextPosition = null;
+            rotatedBlock = null;
             continue;
         } else if (next.gameOver) {
             gameOver = true;
             board = board.map((row) => row.map((_) => true));
             continue;
         } else if (next.collision && ['RL', 'RR', 'L', 'R', 'D'].includes(move)) {
+            nextPosition = null;
+            rotatedBlock = null;
             continue;
         } else if ((next.collision || next.outOfBounds) && 'DROP' === move) {
             const result = renderBlockOnBoard(block, board, position);
