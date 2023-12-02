@@ -4,6 +4,7 @@
 const getStyles = (width, height) => (`
     :host {
         display: block;
+        box-sizing: border-box;
     }
 
     .container {
@@ -17,6 +18,7 @@ const getStyles = (width, height) => (`
         border: 1px solid var(--bg-col);
         background: var(--fg-col);
         opacity: 0.1;
+        box-sizing: border-box;
     }
 
     .block.active {

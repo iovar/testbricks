@@ -3,13 +3,18 @@ import { proxify } from '../lib/proxy.js';
 
 // <style>
 const getStyles = () => (`
-    :host { display: block; }
+    :host {
+        display: block;
+        box-sizing: border-box;
+    }
+
     .container {
         aspect-ratio: 3/4;
 
         border: 2px solid var(--fg-col);
         width: calc(56.25vh - 8px);
         margin: 0 auto;
+        box-sizing: border-box;
 
         display:  grid;
         grid-template-columns: 2fr 1fr;

@@ -3,6 +3,10 @@ import { proxify } from '../lib/proxy.js';
 
 // <style>
 const getStyles = () => (`
+    :host {
+        display: block;
+        box-sizing: border-box;
+    }
     .container {
         width: 100%;
         display: grid;
@@ -11,6 +15,7 @@ const getStyles = () => (`
         padding: 8px;
         container-type: size;
         height: 100%;
+        box-sizing: border-box;
     }
 
     .button {
@@ -27,6 +32,7 @@ const getStyles = () => (`
         appearance: none;
         line-height: 100%;
         padding: 0;
+        box-sizing: border-box;
     }
 
     .button:active {
