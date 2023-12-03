@@ -2,15 +2,15 @@ const cacheName = 'testbricks-v1';
 
 const cachedFiles = [
     // './',
-    // 'src/components/GameContainer.js',
-    // 'src/components/MineFieldBlock.js',
-    // 'src/components/TopBar.js',
-    // 'src/game/game.js',
-    // 'src/main.js',
     // 'icon.png',
     // 'index.html',
     // 'sw.js',
     // 'manifest.json',
+    // 'src/main.js',
+    // 'src/components/GameContainer.js',
+    // 'src/components/MineFieldBlock.js',
+    // 'src/components/TopBar.js',
+    // 'src/game/game.js',
 ];
 
 const addFilesToCache = async () => {

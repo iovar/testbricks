@@ -10,7 +10,7 @@ const getStyles = () => (`
         justify-content: center;
         height: 100%;
         width: 100%;
-        padding-top: 32px;
+        padding-top: 35px;
     }
 
     .game-container {
