@@ -1,14 +1,22 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no, shrink-to-fit=no" />
-    <meta name="HandheldFriendly" content="true">
+
+    <title>Test Bricks</title>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" sizes="144x144" href="icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="HandheldFriendly" content="true">
     <meta charset="utf-8">
-
-    <title>Test Bricks</title>
+    <style>
+        body {
+            touch-action: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
     <test-bricks level:="0" ></test-bricks>
