@@ -33,6 +33,12 @@ const getStyles = () => (`
         padding: 0;
     }
 
+    .container, .button {
+        touch-action: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
     .button:active {
         background: var(--bg-col);
         color: var(--fg-col);
