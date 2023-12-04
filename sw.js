@@ -1,16 +1,21 @@
-const cacheName = 'testbricks-v1';
+const cacheName = 'testbricks-v2';
 
 const cachedFiles = [
-    // './',
-    // 'icon.png',
-    // 'index.html',
-    // 'sw.js',
-    // 'manifest.json',
-    // 'src/main.js',
-    // 'src/components/GameContainer.js',
-    // 'src/components/MineFieldBlock.js',
-    // 'src/components/TopBar.js',
-    // 'src/game/game.js',
+    './',
+    'icon.png',
+    'index.html',
+    'sw.js',
+    'manifest.json',
+    'src/main.js',
+    'src/components/BlockHeap.js',
+    'src/components/Controls.js',
+    'src/components/Display.js',
+    'src/components/Status.js',
+    'src/components/TestBricks.js',
+    'src/game/blocks.js',
+    'src/game/board.js',
+    'src/game/game.js',
+    'src/lib/proxy.js',
 ];
 
 const addFilesToCache = async () => {
