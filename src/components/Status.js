@@ -1,4 +1,5 @@
 // vi: ft=html
+import { updateDom } from '../lib/dom.js';
 import { proxify } from '../lib/proxy.js';
 
 // <style>
@@ -64,6 +65,7 @@ export class StatusComponent extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        this.#values = proxify(this, this.#values);
     }
 
     connectedCallback() {
@@ -76,7 +78,7 @@ export class StatusComponent extends HTMLElement {
     }
 
     render() {
-        this.shadowRoot.innerHTML = getTemplate(this.#values);
+        updateDom(this.shadowRoot, getTemplate(this.#values));
     }
 }
 

@@ -1,4 +1,5 @@
 // vi: ft=html
+import { updateDom } from '../lib/dom.js';
 
 // <style>
 const getStyles = (width, height) => (`
@@ -71,7 +72,7 @@ export class BlockHeap extends HTMLElement {
     }
 
     render(board) {
-        this.shadowRoot.innerHTML = getTemplate(board);
+        updateDom(this.shadowRoot, getTemplate(board));
     }
 }
 

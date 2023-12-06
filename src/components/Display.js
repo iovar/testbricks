@@ -1,4 +1,5 @@
 // vi: ft=html
+import { updateDom } from '../lib/dom.js';
 import { proxify } from '../lib/proxy.js';
 
 // <style>
@@ -32,6 +33,7 @@ const getTemplate = (values) => (`
             level="${values.level}"
             lines="${values.lines}"
             nextblock="${values.nextblock}"
+        >
         </status-component>
     </section>
 `);
@@ -71,7 +73,7 @@ export class Display extends HTMLElement {
     }
 
     render() {
-        this.shadowRoot.innerHTML = getTemplate(this.#values);
+        updateDom(this.shadowRoot, getTemplate(this.#values));
     }
 }
 // </script>

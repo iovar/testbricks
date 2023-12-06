@@ -1,4 +1,4 @@
-const cacheName = 'testbricks-v2';
+const cacheName = 'testbricks-v3';
 
 const cachedFiles = [
     './',

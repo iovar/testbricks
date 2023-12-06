@@ -1,4 +1,5 @@
 // vi: ft=html
+import { updateDom } from '../lib/dom.js';
 import { proxify } from '../lib/proxy.js';
 import { MAX_LEVEL, startGame } from '../game/game.js';
 
@@ -31,7 +32,8 @@ const getTemplate = (values) => (`
             level="${values.level}"
             lines="${values.lines}"
         ></display-component>
-        <controls-component onpress="onPress"></controls-component> </section>
+        <controls-component onpress="onPress"></controls-component>
+    </section>
 `);
 
 // <script>
@@ -71,7 +73,7 @@ export class TestBricks extends HTMLElement {
     }
 
     render() {
-        this.shadowRoot.innerHTML = getTemplate(this.#values);
+        updateDom(this.shadowRoot, getTemplate(this.#values));
     }
 
     onPress(event) {

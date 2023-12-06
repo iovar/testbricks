@@ -1,4 +1,5 @@
 // vi: ft=html
+import { clsj, updateDom } from '../lib/dom.js';
 import { proxify } from '../lib/proxy.js';
 
 // <style>
@@ -39,7 +40,7 @@ const getStyles = () => (`
         user-select: none;
     }
 
-    .button:active {
+    .button.active {
         background: var(--bg-col);
         color: var(--fg-col);
     }
@@ -58,7 +59,7 @@ const getTemplate = (values) => (`
     <section class="container">
         ${['⇦ ', '⇩ ', '⇨ ', '↺ ', '↻ '].map((label, index) =>(`
             <button
-                 class="button ${values.pressed === index ? 'active' : '' }"
+                 class="button ${clsj({ active: values.pressed === index })}"
                  onMouseDown="this.getRootNode().host.onDown(${index})"
                  onMouseUp="this.getRootNode().host.onUp(${index})"
              >${label}</button>
@@ -123,7 +124,7 @@ export class Controls extends HTMLElement {
     }
 
     render() {
-        this.shadowRoot.innerHTML = getTemplate(this.#values);
+        updateDom(this.shadowRoot, getTemplate(this.#values));
     }
 
     onDown(pressed) {
